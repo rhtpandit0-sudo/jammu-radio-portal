@@ -1,29 +1,29 @@
 const stations = {
   hindi: {
     india: {
-      "Radio Mirchi": "http://peridot.streamguys.com:7150/Mirchi",
-      "AIR FM Gold": "http://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8"
+      "Radio Mirchi": "https://prclive4.listenon.in/Mirchi",
+      "AIR FM Gold": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8"
     }
   },
   english: {
     uk: {
-      "BBC Radio 1": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p"
+      "BBC Radio 1": "https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one"
     },
     usa: {
-      "Radio Paradise": "http://stream-uk1.radioparadise.com/aac-320"
+      "Radio Paradise": "https://stream.radioparadise.com/aac-320"
     }
   },
   kashmiri: {
     india: {
-      "DD Kashir Radio": "http://air.pc.cdn.bitgravity.com/air/live/pbaudio002/playlist.m3u8"
+      "Radio Sharda": "https://stream.zeno.fm/g4ua0b105eeuv"
     }
   },
   punjabi: {
     india: {
-      "Punjab Radio": "http://sc-bb.1.fm:8017/"
+      "Punjabi Radio": "https://node-16.zeno.fm/q9t5g88u0tzuv"
     },
     canada: {
-      "Punjabi Junction": "http://s6.voscast.com:10708/"
+      "Desi Punjabi FM": "https://node-22.zeno.fm/zz2t0q88u0hvv"
     }
   }
 };
@@ -45,14 +45,15 @@ function loadStations() {
   let stationSelect = document.getElementById("station");
   stationSelect.innerHTML = "<option value=''>-- Select Channel --</option>";
   if (lang && country && stations[lang][country]) {
-    Object.keys(stations[lang][country]).forEach(station => {
-      stationSelect.innerHTML += `<option value='${stations[lang][country][station]}'>${station}</option>`;
+    Object.entries(stations[lang][country]).forEach(([stationName, streamUrl]) => {
+      stationSelect.innerHTML += `<option value='${streamUrl}'>${stationName}</option>`;
     });
   }
 }
 
 function playStation() {
   let stationUrl = document.getElementById("station").value;
+  if (!stationUrl) return;
   let player = document.getElementById("player");
   let source = document.getElementById("streamSource");
   source.src = stationUrl;
