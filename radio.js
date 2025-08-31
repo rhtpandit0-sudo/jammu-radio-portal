@@ -21,6 +21,9 @@ const stations = {
   punjabi: {
     india: {
       "Punjab Radio": "http://sc-bb.1.fm:8017/"
+    },
+    canada: {
+      "Punjabi Junction": "http://s6.voscast.com:10708/"
     }
   }
 };
@@ -29,7 +32,7 @@ function loadCountries() {
   let lang = document.getElementById("language").value;
   let countrySelect = document.getElementById("country");
   countrySelect.innerHTML = "<option value=''>-- Select Country --</option>";
-  if(lang && stations[lang]) {
+  if (lang && stations[lang]) {
     Object.keys(stations[lang]).forEach(country => {
       countrySelect.innerHTML += `<option value='${country}'>${country.toUpperCase()}</option>`;
     });
@@ -41,7 +44,7 @@ function loadStations() {
   let country = document.getElementById("country").value;
   let stationSelect = document.getElementById("station");
   stationSelect.innerHTML = "<option value=''>-- Select Channel --</option>";
-  if(lang && country && stations[lang][country]) {
+  if (lang && country && stations[lang][country]) {
     Object.keys(stations[lang][country]).forEach(station => {
       stationSelect.innerHTML += `<option value='${stations[lang][country][station]}'>${station}</option>`;
     });
