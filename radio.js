@@ -20,7 +20,7 @@ const stations = {
   },
   punjabi: {
     india: {
-      "Punjabi Radio": "https://node-16.zeno.fm/q9t5g88u0tzuv"
+      "Punjabi Radio": "https://node-16.zeno.fm/q9t5g88u0tzuv",
     },
     canada: {
       "Desi Punjabi FM": "https://node-22.zeno.fm/zz2t0q88u0hvv"
@@ -34,7 +34,7 @@ function loadCountries() {
   countrySelect.innerHTML = "<option value=''>-- Select Country --</option>";
   if (lang && stations[lang]) {
     Object.keys(stations[lang]).forEach(country => {
-      countrySelect.innerHTML += `<option value='${country}'>${country.toUpperCase()}</option>`;
+      countrySelect.innerHTML += `<option value="${country}">${country.toUpperCase()}</option>`;
     });
   }
 }
@@ -46,7 +46,7 @@ function loadStations() {
   stationSelect.innerHTML = "<option value=''>-- Select Channel --</option>";
   if (lang && country && stations[lang][country]) {
     Object.entries(stations[lang][country]).forEach(([stationName, streamUrl]) => {
-      stationSelect.innerHTML += `<option value='${streamUrl}'>${stationName}</option>`;
+      stationSelect.innerHTML += `<option value="${streamUrl}">${stationName}</option>`;
     });
   }
 }
